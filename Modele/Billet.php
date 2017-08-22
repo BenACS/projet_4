@@ -15,7 +15,7 @@ class Billet extends Modele {
      */
     public function getBillets() {
         $sql = 'select id, date_creation as date,'
-                . ' titre, contenu from Billets'
+                . ' titre, contenu from billets'
                 . ' order by id desc';
         $billets = $this->executerRequete($sql);
         return $billets;

@@ -10,18 +10,18 @@ class Commentaire extends Modele {
 
 // Renvoie la liste des commentaires associés à un billet
     public function getCommentaires($idBillet) {
-        $sql = 'select COM_ID as id, COM_DATE as date,'
-                . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
-                . ' where BIL_ID=?';
+        $sql = 'select id, date_commentaire as date,'
+                . ' pseudo as auteur, contenu from commentaires'
+                . ' where id_billet=?';
         $commentaires = $this->executerRequete($sql, array($idBillet));
         return $commentaires;
     }
 
     // Ajoute un commentaire dans la base
     public function ajouterCommentaire($auteur, $contenu, $idBillet) {
-        $sql = 'insert into T_COMMENTAIRE(COM_DATE, COM_AUTEUR, COM_CONTENU, BIL_ID)'
+        $sql = 'insert into commentaires(date_commentaire, pseudo, contenu, id_billet)'
             . ' values(?, ?, ?, ?)';
-        $date = date(DATE_W3C);  // Récupère la date courante
+        $date = date("Y-m-d H:i:s");  // Récupère la date courante
         $this->executerRequete($sql, array($date, $auteur, $contenu, $idBillet));
     }
 }
