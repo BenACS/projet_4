@@ -8,8 +8,7 @@
     <body>
         <div id="global">
             <header>
-                <a href="index.php"><h1 id="titreBlog">Mon Blog</h1></a>
-                <p>Je vous souhaite la bienvenue sur ce modeste blog.</p>
+                <a href="index.php"><h1 id="titreBlog">Blog de l'écrivain "Jean-Paulet"</h1></a>
             </header>
             <div id="contenu">
                 <?= $contenu ?>

@@ -9,25 +9,36 @@
    - le parent de body également en "height: 100%". */
 html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    color: #bfbfbf;
-    background: black;
+    background: rgb(181, 107, 107);
     font-family: 'Futura-Medium', 'Futura', 'Trebuchet MS', sans-serif;
 }
 
-h1 {
-    color: white;
+h1, h2 {
+    color: rgb(160, 104, 104);
+}
+
+a {
+    text-decoration: none;
 }
 
 .titreBillet {
     margin-bottom : 0px;
 }
 
+hr {
+  border: 1px solid rgb(232, 216, 192);
+}
+
+/* BILLETS */
+
 #global {
     min-height: 100%;  /* Voir commentaire sur html et body plus haut */
-    background: #333534;
+    background: rgb(248, 240, 192);
     width: 70%;
     margin: auto;	/* Permet de centrer la div */
     text-align: justify;
@@ -38,9 +49,25 @@ h1 {
     margin-bottom : 30px;
 }
 
+article {
+    background: rgb(216, 168, 48);
+    border: 1px solid rgb(224, 152, 128);
+}
+
+article header p {
+    text-align: right;
+}
+
+article header p, article h2:first-of-type {
+    margin: 0;
+    background: rgba(248, 232, 152, 0.5);
+}
+
 #titreBlog, #piedBlog {
     text-align: center;
 }
+
+/* COMMENTAIRES */
 
 #titreReponses {
     font-size : 100%;

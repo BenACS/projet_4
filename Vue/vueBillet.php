@@ -3,13 +3,13 @@
 <article>
     <header>
         <h1 class="titreBillet"><?= $billet['titre'] ?></h1>
-        <time><?= $billet['date'] ?></time>
+        <time>posté le <?= $billet['date'] ?></time>
     </header>
     <p><?= $billet['contenu'] ?></p>
 </article>
 <hr />
 <header>
-    <h1 id="titreReponses">Réponses à <?= $billet['titre'] ?></h1>
+    <h2 id="titreReponses">Réponses à <?= $billet['titre'] ?></h2>
 </header>
 <?php foreach ($commentaires as $commentaire): ?>
     <p><?= $commentaire['auteur'] ?> dit :</p>
