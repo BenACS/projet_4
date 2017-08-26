@@ -2,18 +2,20 @@
 
 <article>
     <header>
-        <h1 class="titreBillet"><?= $billet['titre'] ?></h1>
-        <time>posté le <?= $billet['date'] ?></time>
+        <h2 class="titreBillet"><?= $billet['titre'] ?></h2>
+        <p>posté le <?= $billet['date'] ?></p>
     </header>
     <p><?= $billet['contenu'] ?></p>
 </article>
 <hr />
 <header>
-    <h2 id="titreReponses">Réponses à <?= $billet['titre'] ?></h2>
+    <h3>Commentaires :</h3>
 </header>
 <?php foreach ($commentaires as $commentaire): ?>
-    <p><?= $commentaire['auteur'] ?> dit :</p>
-    <p><?= $commentaire['contenu'] ?></p>
+    <article class="cont_comment">
+        <p class="auteur"><?= $commentaire['auteur'] ?> dit :</p>
+        <p class="comment"><?= $commentaire['contenu'] ?></p>
+    </article>
 <?php endforeach; ?>
 <hr />
 <form method="post" action="index.php?action=commenter">

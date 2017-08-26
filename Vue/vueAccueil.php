@@ -4,10 +4,10 @@
     ?>
     <article>
         <header>
-            <p>posté le <?= $billet['date'] ?></p>
             <a href="<?= "index.php?action=billet&id=" . $billet['id'] ?>">
                 <h2 class="titreBillet"><?= $billet['titre'] ?></h2>
-            </a>            
+            </a>
+            <p>posté le <?= $billet['date'] ?></p>
         </header>
         <p><?= $billet['contenu'] ?></p>
     </article>
