@@ -2,15 +2,18 @@
 
 require_once 'Controleur/ControleurAccueil.php';
 require_once 'Controleur/ControleurBillet.php';
+require_once 'Controleur/ControleurSession.php';
 require_once 'Vue/Vue.php';
 class Routeur {
 
     private $ctrlAccueil;
     private $ctrlBillet;
+    private $ctrlSession;
 
     public function __construct() {
         $this->ctrlAccueil = new ControleurAccueil();
         $this->ctrlBillet = new ControleurBillet();
+        $this->ctrlSession = new ControleurSession();
     }
 
     // Route une requête entrante : exécution l'action associée

@@ -13,6 +13,8 @@
             <div id="contenu">
                 <?= $contenu ?>
             </div> <!-- #contenu -->
+            <footer>
+            </footer>
         </div> <!-- #global -->
     </body>
 </html>
