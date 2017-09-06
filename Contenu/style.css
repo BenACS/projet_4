@@ -85,3 +85,37 @@ article header p, article h2:first-of-type {
 article + article {
     margin-top: 8px; /* On ajoute un peu d'espace entre chaque commentaire */
 }
+
+/* INTERFACE ADMIN */
+
+/* Bouton + formulaire d'accès à l'interface */
+#boutonPopup {
+    position: fixed;
+    bottom: 4px;
+    right: 4px;
+}
+
+#popupAdmin {
+    border: 1px solid rgb(224, 152, 128);
+    border-radius: 4px;
+    background: rgba(216, 168, 48, 0.75);
+    padding: 10px;
+    display: none;
+}
+
+#popupAdmin form {
+    margin: 0;
+}
+
+#popupAdmin input {
+    margin: 5px 0px;
+}
+
+#popupAdmin input:last-of-type {
+    margin: 0;
+}
+
+#boutonPopup {
+    padding: 5px 10px;
+    border-radius: 4px;
+}

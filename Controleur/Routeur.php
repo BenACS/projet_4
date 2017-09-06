@@ -13,7 +13,7 @@ class Routeur {
     public function __construct() {
         $this->ctrlAccueil = new ControleurAccueil();
         $this->ctrlBillet = new ControleurBillet();
-        $this->ctrlSession = new ControleurSession();
+        $this->ctrlAdmin = new ControleurAdmin();
     }
 
     // Route une requête entrante : exécution l'action associée
@@ -33,6 +33,11 @@ class Routeur {
                     $contenu = $this->getParametre($_POST, 'contenu');
                     $idBillet = $this->getParametre($_POST, 'id');
                     $this->ctrlBillet->commenter($auteur, $contenu, $idBillet);
+                }
+                else if ($_GET['action'] == 'connexion') {
+                    $login = $this->getParametre($_POST, 'login');
+                    $mdp = $this->getParametre($_POST, 'mdp');
+                    $this->ctrlAdmin->verifierUtilisateur($login, $mdp);
                 }
                 else
                     throw new Exception("Action non valide");

@@ -14,6 +14,13 @@
                 <?= $contenu ?>
             </div> <!-- #contenu -->
             <footer>
+                <?php if ($_SESSION['login']) {
+                            echo "connecté";
+                        } 
+                        else {
+                            include "vueAccesInterfaceAdmin.php";
+                        }
+                ?>
             </footer>
         </div> <!-- #global -->
     </body>
