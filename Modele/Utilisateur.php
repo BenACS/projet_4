@@ -15,11 +15,16 @@
 			$utilisateur = $login . "," . $mdp_hashe;
 
 			$fichier = fopen('identifiants.php', 'r');
-			$test = fgets($fichier);
+			$identifiants = fgets($fichier);
 
-			var_dump($test);
+			// On compare les identifiants du formulaire à ceux présents dans le fichier
+			if ($utilisateur === $identifiants) {
+				return true;
+			}
+			else {
+				return false;
+			}
+
 			fclose($fichier);
-
-			return true;
 		}
 	}

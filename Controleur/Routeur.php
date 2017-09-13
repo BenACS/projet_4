@@ -2,8 +2,9 @@
 
 require_once 'Controleur/ControleurAccueil.php';
 require_once 'Controleur/ControleurBillet.php';
-require_once 'Controleur/ControleurSession.php';
+require_once 'Controleur/ControleurAdmin.php';
 require_once 'Vue/Vue.php';
+
 class Routeur {
 
     private $ctrlAccueil;
@@ -37,7 +38,7 @@ class Routeur {
                 else if ($_GET['action'] == 'connexion') {
                     $login = $this->getParametre($_POST, 'login');
                     $mdp = $this->getParametre($_POST, 'mdp');
-                    $this->ctrlAdmin->verifierUtilisateur($login, $mdp);
+                    $this->ctrlAdmin->connect($login, $mdp);
                 }
                 else
                     throw new Exception("Action non valide");
