@@ -18,7 +18,7 @@
                             echo "connecté";
                         } 
                         else {
-                            include "vueAccesInterfaceAdmin.php";
+                            include "vueConnexion.php";
                         }
                 ?>
             </footer>

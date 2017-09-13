@@ -41,5 +41,4 @@ class Vue {
             throw new Exception("Fichier '$fichier' introuvable");
         }
     }
-
 }
