@@ -38,4 +38,13 @@ class Billet extends Modele {
             throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
     }
 
+    public function supprimer($id) {
+        $sql = 'delete from Billets where id=?';
+        $billet = $this->executerRequete($sql, array($id));
+    }
+
+    public function modifier() {
+        $sql = "";
+        $billet = $this->executerRequete($sql, array());
+    }
 }

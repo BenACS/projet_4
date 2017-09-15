@@ -89,17 +89,18 @@ article + article {
 /* INTERFACE ADMIN */
 
 /* Bouton + formulaire d'accès à l'interface */
-#boutonPopup {
+#divAccesInterfaceAdmin {
     position: fixed;
     bottom: 4px;
-    right: 4px;
+    right: 2px;
 }
 
 #popupAdmin {
     border: 1px solid rgb(224, 152, 128);
     border-radius: 4px;
     background: rgba(216, 168, 48, 0.75);
-    padding: 10px;
+    padding: 4px;
+    margin-bottom: 4px;
     display: none;
 }
 
@@ -107,12 +108,13 @@ article + article {
     margin: 0;
 }
 
-#popupAdmin input {
+#popupAdmin input[type=text], #popupAdmin input[type=password] {
     margin: 5px 0px;
+    width: 152px;
 }
 
-#popupAdmin input:last-of-type {
-    margin: 0;
+#popupAdmin input[type=submit] {
+    width: 156px;
 }
 
 #boutonPopup {

@@ -18,8 +18,10 @@
 				$_SESSION['login'] = true;
 
 				// On génère la vue d'administration du blog
-				$vue = new Vue("Connexion");
-        		$vue->generer(array());
+				$this->billet = new Billet();
+				$billets = $this->billet->getBillets();
+				$vue = new Vue("Admin");
+        		$vue->generer(array('billets' => $billets));
 			}
 			else {
 				// Si la fonction ne renvoie pas "true", on affiche un message d'erreur

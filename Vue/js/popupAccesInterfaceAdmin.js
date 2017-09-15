@@ -1,7 +1,13 @@
-function afficherPopup() {
-	document.getElementById('popupAdmin').style.display = "block";
-}
+var popup = document.getElementById('popupAdmin');
 
-function cacherPopup() {
-	document.getElementById('popupAdmin').style.display = "none";
+/* Si le formulaire de connexion est déjà affiché, alors cliquer sur le bouton
+cachera le formulaire. Si le formulaire n'est pas affiché, alors cliquer sur le
+bouton affichera le formulaire de connexion */
+function togglePopup() {
+	if (popup.style.display == "block") {
+		popup.style.display = "none";
+	}
+	else {
+		popup.style.display = "block";
+	}
 }

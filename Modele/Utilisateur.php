@@ -7,10 +7,6 @@
 		}
 
 		public function verifierUtilisateur($login, $mdp) {
-			/*
-				Comparer $login et $mdp hashé par rapport au fichier
-			*/
-
 			$mdp_hashe = hash("sha256", $mdp);
 			$utilisateur = $login . "," . $mdp_hashe;
 

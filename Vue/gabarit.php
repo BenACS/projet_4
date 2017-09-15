@@ -13,15 +13,25 @@
             <div id="contenu">
                 <?= $contenu ?>
             </div> <!-- #contenu -->
-            <footer>
+        </div> <!-- #global -->
+                    <footer>
                 <?php if ($_SESSION['login']) {
-                            echo "connecté";
+
                         } 
                         else {
                             include "vueConnexion.php";
                         }
                 ?>
             </footer>
-        </div> <!-- #global -->
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=8fwlfhhvvlj749bi3q9l558no7zzxrkq6ab6i8azo2id6vgw"></script>
+        <script>
+            tinymce.init({
+                selector: '#divTinyMCE'
+            });
+        </script>
+        <form id="formTinyMCE" method="post">
+            <textarea id="divTinyMCE"></textarea>
+        </form>
+        <script src="Vue/js/popupTinyMCE.js"></script>
     </body>
 </html>

@@ -40,6 +40,10 @@ class Routeur {
                     $mdp = $this->getParametre($_POST, 'mdp');
                     $this->ctrlAdmin->connect($login, $mdp);
                 }
+                else if ($_GET['action'] == 'admin') {
+                    $id = $this->getParametre($_POST, 'idActuel');
+                    $this->ctrlBillet->gerer($id);
+                }
                 else
                     throw new Exception("Action non valide");
             }
