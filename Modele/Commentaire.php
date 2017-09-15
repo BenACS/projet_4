@@ -12,7 +12,7 @@ class Commentaire extends Modele {
     public function getCommentaires($idBillet) {
         $sql = 'select id, date_commentaire as date,'
                 . ' pseudo as auteur, contenu from commentaires'
-                . ' where id_billet=?';
+                . ' where id_billet=? order by date desc';
         $commentaires = $this->executerRequete($sql, array($idBillet));
         return $commentaires;
     }

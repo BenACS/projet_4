@@ -88,8 +88,8 @@ article + article {
 
 /* INTERFACE ADMIN */
 
-/* Bouton + formulaire d'accès à l'interface */
-#divAccesInterfaceAdmin {
+/* Boutons + formulaire d'accès à l'interface */
+#divAccesInterfaceAdmin, #boutonDeco {
     position: fixed;
     bottom: 4px;
     right: 2px;
@@ -117,7 +117,7 @@ article + article {
     width: 156px;
 }
 
-#boutonPopup {
+#boutonPopup, #boutonDeco {
     padding: 5px 10px;
     border-radius: 4px;
 }
