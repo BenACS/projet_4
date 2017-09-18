@@ -44,8 +44,11 @@ class Routeur {
                     $this->ctrlAdmin->deconnecter();
                 }
                 else if ($_GET['action'] == 'admin') {
-                    $id = $this->getParametre($_POST, 'idActuel');
-                    $this->ctrlBillet->gerer($id);
+                    if ($_SESSION['login'] == 'true') {
+                        $this->ctrlAdmin->pageAdmin();
+                    }
+                    else
+                        throw new Exception("Accès non autorisé");
                 }
                 else
                     throw new Exception("Action non valide");

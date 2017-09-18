@@ -16,6 +16,7 @@
         </div> <!-- #global -->
         <footer>
             <?php if ($_SESSION['login']) {
+                include "vueBoutonPageAdmin.php";
                 include "vueDeconnexion.php";
             } 
             else {

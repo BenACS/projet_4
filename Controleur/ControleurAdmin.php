@@ -18,15 +18,12 @@
 				// On met la variable de session à "true"
 				$_SESSION['login'] = true;
 
-				// On génère / affiche la vue d'accueil du blog
-				$this->billet = new Billet();
-				$billets = $this->billet->getBillets();
-				$vue = new Vue("Accueil");
-        		$vue->generer(array('billets' => $billets));
+				// On génère / affiche l'interface admin
+				$this->pageAdmin() ;
 			}
 			else {
 				// Si la fonction ne renvoie pas "true", on affiche un message d'erreur
-				throw new Exception("Erreur : Login ou Mot de passe incorrect.");
+				throw new Exception("Login ou Mot de passe incorrect");
 			}
 		}
 
@@ -40,4 +37,12 @@
 			$vue = new Vue("Accueil");
         	$vue->generer(array('billets' => $billets));
 		}
+
+		// Génère / affiche l'interface admin
+		public function pageAdmin() {
+			$this->billet = new Billet();
+	        $billets = $this->billet->getBillets();
+	        $vue = new Vue("Admin");
+	        $vue->generer(array('billets' => $billets));
+	    }
 	}

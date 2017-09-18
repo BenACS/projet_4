@@ -117,7 +117,13 @@ article + article {
     width: 156px;
 }
 
-#boutonPopup, #boutonDeco input {
+#boutonPopup, #boutonDeco input, #boutonPageAdmin input {
     padding: 5px 10px;
     border-radius: 4px;
+}
+
+#boutonPageAdmin {
+    position: fixed;
+    bottom: 37px;
+    right: 2px;
 }
