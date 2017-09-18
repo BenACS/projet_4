@@ -117,7 +117,7 @@ article + article {
     width: 156px;
 }
 
-#boutonPopup, #boutonDeco {
+#boutonPopup, #boutonDeco input {
     padding: 5px 10px;
     border-radius: 4px;
 }
