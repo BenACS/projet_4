@@ -1,3 +1,8 @@
+<!-- Ajouter un billet -->
+<form method="POST" action="index.php?action=ajouterBillet">
+    <input type="submit" value="Ajouter un nouveau billet">
+</form>
+<hr />
 <?php foreach ($billets as $billet):
     ?>
     <article>
@@ -8,6 +13,14 @@
             </a>
             <p>posté le <?= $billet['date'] ?></p>
         </header>
+        <!-- Modifier le billet -->
+        <form method="POST" action="<?= "index.php?action=billet&id=" . $billet['id'] ?>">
+            <input type="submit" value="Modifier">
+        </form>
+        <!-- Supprimer le billet -->
+        <form method="POST" action="index.php?action=supprimerBillet">
+            <input type="submit" value="Supprimer">
+        </form>
     </article>
     <hr />
 <?php endforeach; ?>

@@ -24,7 +24,12 @@ class Routeur {
                 if ($_GET['action'] == 'billet') {
                     $idBillet = intval($this->getParametre($_GET, 'id'));
                     if ($idBillet != 0) {
-                        $this->ctrlBillet->billet($idBillet);
+                        if ($_SESSION['login'] == true) {
+                            $this->ctrlAdmin->billetAdmin($idBillet);
+                        }
+                        else {
+                            $this->ctrlBillet->billet($idBillet);
+                        }
                     }
                     else
                         throw new Exception("Identifiant de billet non valide");

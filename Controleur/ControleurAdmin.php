@@ -7,6 +7,7 @@
 
 		private $utilisateur;
 		private $billet;
+		private $commentaire;
 
 		public function __construct() {
 			$this->utilisateur = new Utilisateur();
@@ -44,5 +45,15 @@
 	        $billets = $this->billet->getBillets();
 	        $vue = new Vue("Admin");
 	        $vue->generer(array('billets' => $billets));
+	    }
+
+	    public function billetAdmin($idBillet) {
+	    	$this->billet = new Billet();
+	    	$this->commentaire = new Commentaire();
+
+			$billet = $this->billet->getBillet($idBillet);
+	        $commentaires = $this->commentaire->getCommentaires($idBillet);
+	        $vue = new Vue("BilletAdmin");
+	        $vue->generer(array('billet' => $billet, 'commentaires' => $commentaires));
 	    }
 	}
