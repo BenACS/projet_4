@@ -1,5 +1,5 @@
 <!-- Ajouter un billet -->
-<form method="POST" action="index.php?action=ajouterBillet">
+<form method="POST" action="index.php?action=nouveauBillet">
     <input type="submit" value="Ajouter un nouveau billet">
 </form>
 <hr />
@@ -18,7 +18,7 @@
             <input type="submit" value="Modifier">
         </form>
         <!-- Supprimer le billet -->
-        <form method="POST" action="index.php?action=supprimerBillet">
+        <form method="POST" action="<?= "index.php?action=supprimerBillet&id=" . $billet['id'] ?>">
             <input type="submit" value="Supprimer">
         </form>
     </article>

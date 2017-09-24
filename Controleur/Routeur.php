@@ -55,6 +55,31 @@ class Routeur {
                     else
                         throw new Exception("Accès non autorisé");
                 }
+                else if ($_GET['action'] == 'supprimerBillet') {
+                    if ($_SESSION['login'] == 'true') {
+                        $idBillet = intval($this->getParametre($_GET, 'id'));
+                        $this->ctrlBillet->supprimer($idBillet);
+                    }
+                    else
+                        throw new Exception("Accès non autorisé");
+                }
+                else if ($_GET['action'] == 'modifierBillet') {
+                    if ($_SESSION['login'] == 'true') {
+                        $idBillet = intval($this->getParametre($_GET, 'id'));
+                        $this->ctrlBillet->modifier($idBillet);
+                    }
+                    else
+                        throw new Exception("Accès non autorisé");
+                }
+                else if ($_GET['action'] == 'nouveauBillet') {
+                    $vue = new Vue("FormCreationBillet");
+                    $vue->generer(array());
+                }
+                else if ($_GET['action'] == 'ajouterBillet') {
+                    $titre = $this->getParametre($_POST, 'titre');
+                    $contenu = $this->getParametre($_POST, 'contenu');
+                    $this->ctrlBillet->ajouter($titre, $contenu);
+                }
                 else
                     throw new Exception("Action non valide");
             }

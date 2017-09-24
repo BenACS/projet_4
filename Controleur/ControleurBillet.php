@@ -30,18 +30,18 @@ class ControleurBillet {
         $this->billet($idBillet);
     }
 
-    // Supprime un billet
-    public function gerer($id) {
-        if ($_POST['action'] == 'supprimer') {
-            $billet = $this->billet->supprimer($id);
-            $vue = new Vue("Admin");
-            $vue->generer(array('billets' => $billets));
-        }
-        else if ($_POST['action'] == 'modifier') {
-            $billet = $this->billet->modifier($id);
-            $vue = new Vue("Admin");
-            $vue->generer(array('billets' => $billets));
-        }
+    public function supprimer($idBillet) {
+        $this->billet->supprimer($idBillet);
+        $billets = $this->billet->getBillets();
+        $vue = new Vue("Admin");
+        $vue->generer(array('billets' => $billets));
+    }
+
+    public function ajouter($titre, $contenu) {
+        $this->billet->ajouter($titre, $contenu);
+        $billets = $this->billet->getBillets();
+        $vue = new Vue("Admin");
+        $vue->generer(array('billets' => $billets));
     }
 }
 

@@ -30,11 +30,6 @@
                 selector: '#divTinyMCE'
             });
         </script>
-        <!--
-        <form id="formTinyMCE" method="post">
-            <textarea id="divTinyMCE"></textarea>
-        </form>
-        -->
         <script src="Vue/js/popupTinyMCE.js"></script>
     </body>
 </html>

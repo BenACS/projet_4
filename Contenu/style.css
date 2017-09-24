@@ -127,3 +127,13 @@ article + article {
     bottom: 37px;
     right: 2px;
 }
+
+/* Formulaire nouveau billet */
+
+#formNouvBillet input[type=text] {
+    width: 100%;
+}
+
+#formNouvBillet textarea {
+    min-height: 200px;
+}

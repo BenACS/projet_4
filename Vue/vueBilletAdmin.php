@@ -1,5 +1,7 @@
 <?php $this->titre = "Mon Blog - " . $billet['titre']; ?>
-
+<form method="POST" action="<?= "index.php?action=modifierBillet&id=" . $billet['id'] ?>">
+        <input type="submit" value="Modifier ce billet">
+</form>
 <article>
     <header>
         <h2 class="titreBillet"><?= $billet['titre'] ?></h2>
@@ -15,6 +17,12 @@
     <article class="cont_comment">
         <p class="auteur"><?= $commentaire['auteur'] ?> dit :</p>
         <p class="comment"><?= $commentaire['contenu'] ?></p>
+        <form method="POST" action="">
+            <input type="submit" value="Modifier ce commentaire">
+        </form>
+        <form method="POST" action="">
+            <input type="submit" value="Supprimer">
+        </form>
     </article>
 <?php endforeach; ?>
 <hr />
