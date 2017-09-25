@@ -10,6 +10,8 @@
 		private $commentaire;
 
 		public function __construct() {
+			$this->billet = new Billet();
+			$this->commentaire = new Commentaire();
 			$this->utilisateur = new Utilisateur();
 		}
 
@@ -33,7 +35,6 @@
 			$_SESSION['login'] = false;
 
 			// On génère / affiche la vue d'accueil du blog
-			$this->billet = new Billet();
 			$billets = $this->billet->getBillets();
 			$vue = new Vue("Accueil");
         	$vue->generer(array('billets' => $billets));
@@ -41,16 +42,12 @@
 
 		// Génère / affiche l'interface admin
 		public function pageAdmin() {
-			$this->billet = new Billet();
 	        $billets = $this->billet->getBillets();
 	        $vue = new Vue("Admin");
 	        $vue->generer(array('billets' => $billets));
 	    }
 
 	    public function billetAdmin($idBillet) {
-	    	$this->billet = new Billet();
-	    	$this->commentaire = new Commentaire();
-
 			$billet = $this->billet->getBillet($idBillet);
 	        $commentaires = $this->commentaire->getCommentaires($idBillet);
 	        $vue = new Vue("BilletAdmin");
@@ -58,7 +55,7 @@
 	    }
 
 	    public function editeurBillet($idBillet) {
-	    	$billet = $this->billet = new Billet();
+	    	$billet = $this->billet->getBillet($idBillet);
 	    	$vue = new Vue("FormModifBillet");
 	    	$vue->generer(array('billet' => $billet));
 	    }
