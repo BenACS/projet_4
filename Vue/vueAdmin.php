@@ -14,7 +14,7 @@
             <p>posté le <?= $billet['date'] ?></p>
         </header>
         <!-- Modifier le billet -->
-        <form method="POST" action="<?= "index.php?action=billet&id=" . $billet['id'] ?>">
+        <form method="POST" action="<?= "index.php?action=modifBillet&id=" . $billet['id'] ?>">
             <input type="submit" value="Modifier">
         </form>
         <!-- Supprimer le billet -->

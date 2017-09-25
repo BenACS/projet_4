@@ -1,5 +1,5 @@
 <?php $this->titre = "Mon Blog - " . $billet['titre']; ?>
-<form method="POST" action="<?= "index.php?action=modifierBillet&id=" . $billet['id'] ?>">
+<form method="POST" action="<?= "index.php?action=modifBillet&id=" . $billet['id'] ?>">
         <input type="submit" value="Modifier ce billet">
 </form>
 <article>
@@ -20,7 +20,7 @@
         <form method="POST" action="">
             <input type="submit" value="Modifier ce commentaire">
         </form>
-        <form method="POST" action="">
+        <form method="POST" action="<?= "index.php?action=supprimerCom&id=" . $commentaire['id'] ?>">
             <input type="submit" value="Supprimer">
         </form>
     </article>

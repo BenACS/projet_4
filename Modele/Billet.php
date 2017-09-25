@@ -44,12 +44,13 @@ class Billet extends Modele {
     }
 
     public function ajouter($titre, $contenu) {
-        $sql = 'insert into billets(titre, contenu, date_creation)' . ' values(?, ?, ?)';
-        $date = date("Y-m-d");
+        $sql = 'insert into billets(titre, contenu, date_creation)'
+                . ' values(?, ?, ?)';
+        $date = date("Y-m-d"); // Récupère la date (on utilise seulement année/mois/jour pour les billets)
         $this->executerRequete($sql, array($titre, $contenu, $date));
     }
 
-    public function modifier() {
+    public function modifier($idBillet) {
         $sql = "";
         $billet = $this->executerRequete($sql, array());
     }

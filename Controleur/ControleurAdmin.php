@@ -56,4 +56,10 @@
 	        $vue = new Vue("BilletAdmin");
 	        $vue->generer(array('billet' => $billet, 'commentaires' => $commentaires));
 	    }
+
+	    public function editeurBillet($idBillet) {
+	    	$billet = $this->billet = new Billet();
+	    	$vue = new Vue("FormModifBillet");
+	    	$vue->generer(array('billet' => $billet));
+	    }
 	}

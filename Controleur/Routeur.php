@@ -3,6 +3,7 @@
 require_once 'Controleur/ControleurAccueil.php';
 require_once 'Controleur/ControleurBillet.php';
 require_once 'Controleur/ControleurAdmin.php';
+require_once 'Controleur/ControleurCommentaire.php';
 require_once 'Vue/Vue.php';
 
 class Routeur {
@@ -10,11 +11,13 @@ class Routeur {
     private $ctrlAccueil;
     private $ctrlBillet;
     private $ctrlSession;
+    private $ctrlCommentaire;
 
     public function __construct() {
         $this->ctrlAccueil = new ControleurAccueil();
         $this->ctrlBillet = new ControleurBillet();
         $this->ctrlAdmin = new ControleurAdmin();
+        $this->ctrlCommentaire = new ControleurCommentaire();
     }
 
     // Route une requête entrante : exécution l'action associée
@@ -63,14 +66,6 @@ class Routeur {
                     else
                         throw new Exception("Accès non autorisé");
                 }
-                else if ($_GET['action'] == 'modifierBillet') {
-                    if ($_SESSION['login'] == 'true') {
-                        $idBillet = intval($this->getParametre($_GET, 'id'));
-                        $this->ctrlBillet->modifier($idBillet);
-                    }
-                    else
-                        throw new Exception("Accès non autorisé");
-                }
                 else if ($_GET['action'] == 'nouveauBillet') {
                     $vue = new Vue("FormCreationBillet");
                     $vue->generer(array());
@@ -79,6 +74,18 @@ class Routeur {
                     $titre = $this->getParametre($_POST, 'titre');
                     $contenu = $this->getParametre($_POST, 'contenu');
                     $this->ctrlBillet->ajouter($titre, $contenu);
+                }
+                else if ($_GET['action'] == 'modifBillet') {
+                    $idBillet = intval($this->getParametre($_GET, 'id'));
+                    if ($idBillet != 0) {
+                        $this->ctrlAdmin->editeurBillet($idBillet);
+                    }
+                    else
+                        throw new Exception("Identifiant de billet non valide");
+                }
+                else if ($_GET['action'] == 'supprimerCom') {
+                    $idCommentaire = intval($this->getParametre($_GET, 'id'));
+                    $this->ctrlCommentaire->supprimer($idCommentaire);
                 }
                 else
                     throw new Exception("Action non valide");

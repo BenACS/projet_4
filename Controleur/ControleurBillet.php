@@ -30,6 +30,7 @@ class ControleurBillet {
         $this->billet($idBillet);
     }
 
+    // Supprime un billet
     public function supprimer($idBillet) {
         $this->billet->supprimer($idBillet);
         $billets = $this->billet->getBillets();
@@ -37,11 +38,19 @@ class ControleurBillet {
         $vue->generer(array('billets' => $billets));
     }
 
+    // Ajoute / crée un nouveau billet
     public function ajouter($titre, $contenu) {
         $this->billet->ajouter($titre, $contenu);
         $billets = $this->billet->getBillets();
         $vue = new Vue("Admin");
         $vue->generer(array('billets' => $billets));
     }
-}
 
+    // Modifie un billet existant
+    public function modifier($idBillet) {
+        $this->billet->modifier($idBillet);
+        $billets = $this->billet->getBillets();
+        $vue = new Vue("Admin");
+        $vue->generer(array('billets' => $billets));
+    }
+}
