@@ -1,13 +1,22 @@
 <?php $this->titre = "Mon Blog - " . $billet['titre']; ?>
-<form method="POST" action="<?= "index.php?action=modifBillet&id=" . $billet['id'] ?>">
-        <input type="submit" value="Modifier ce billet">
-</form>
 <article>
     <header>
         <h2 class="titreBillet"><?= $billet['titre'] ?></h2>
         <p>posté le <?= $billet['date'] ?></p>
     </header>
     <p><?= $billet['contenu'] ?></p>
+    <!-- Modifier le billet -->
+    <form class="boutModif" method="POST" action="<?= "index.php?action=editeurBillet&id=" . $billet['id'] ?>">
+        <button type="submit">
+            <i class="material-icons">create</i>
+        </button>
+    </form>
+    <!-- Supprimer le billet -->
+    <form class="boutSuppr" method="POST" action="<?= "index.php?action=supprimerBillet&id=" . $billet['id'] ?>">
+        <button type="submit">
+            <i class="material-icons">clear</i>
+        </button>
+    </form>
 </article>
 <hr />
 <header>
@@ -17,11 +26,17 @@
     <article class="cont_comment">
         <p class="auteur"><?= $commentaire['auteur'] ?> dit :</p>
         <p class="comment"><?= $commentaire['contenu'] ?></p>
-        <form method="POST" action="">
-            <input type="submit" value="Modifier ce commentaire">
+        <!-- "Modifier" le commentaire -->
+        <form class="boutModif" method="POST" action="">
+            <button type="submit">
+                <i class="material-icons">create</i>
+            </button>
         </form>
-        <form method="POST" action="<?= "index.php?action=supprimerCom&id=" . $commentaire['id'] ?>">
-            <input type="submit" value="Supprimer">
+        <!-- Supprimer le commentaire -->
+        <form class="boutSuppr" method="POST" action="<?= "index.php?action=supprimerCom&id=" . $commentaire['id'] ?>">
+            <button type="submit">
+                <i class="material-icons">clear</i>
+            </button>
         </form>
     </article>
 <?php endforeach; ?>

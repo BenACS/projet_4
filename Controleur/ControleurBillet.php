@@ -47,8 +47,8 @@ class ControleurBillet {
     }
 
     // Modifie un billet existant
-    public function modifier($idBillet) {
-        $this->billet->modifier($idBillet);
+    public function modifier($idBillet, $titre, $contenu) {
+        $this->billet->modifier($idBillet, $titre, $contenu);
         $billets = $this->billet->getBillets();
         $vue = new Vue("Admin");
         $vue->generer(array('billets' => $billets));

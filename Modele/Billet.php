@@ -38,11 +38,13 @@ class Billet extends Modele {
             throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
     }
 
+    // Supprime un billet dans la bdd
     public function supprimer($idBillet) {
         $sql = 'delete from Billets where id=?';
-        $billet = $this->executerRequete($sql, array($idBillet));
+        $this->executerRequete($sql, array($idBillet));
     }
 
+    // Ajoute un billet dans la bdd
     public function ajouter($titre, $contenu) {
         $sql = 'insert into billets(titre, contenu, date_creation)'
                 . ' values(?, ?, ?)';
@@ -50,8 +52,9 @@ class Billet extends Modele {
         $this->executerRequete($sql, array($titre, $contenu, $date));
     }
 
-    public function modifier($idBillet) {
-        $sql = "";
-        $billet = $this->executerRequete($sql, array());
+    // Modifie (update) un billet dans la bdd
+    public function modifier($idBillet, $titre, $contenu) {
+        $sql = 'update billets set titre=?, contenu=? where id=?';
+        $this->executerRequete($sql, array($titre, $contenu, $idBillet));
     }
 }

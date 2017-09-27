@@ -1,4 +1,6 @@
 <form id="formModifBillet" method="POST" action="index.php?action=modifierBillet">
+	<input type="hidden" name="id" value="<? $_GET['id'] ?>">
+
 	<label for="titre">Titre du billet :</label></br>
 	<input type="text" name="titre" value="<?= $billet['titre'] ?>" ></br></br>
 

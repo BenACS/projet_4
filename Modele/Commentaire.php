@@ -27,7 +27,7 @@ class Commentaire extends Modele {
         $commentaire = $this->executerRequete($sql, array($idCommentaire));
     }
 
-    // Modifie un commentaire dans la bdd
+    // Modifie (update) un commentaire dans la bdd
     public function modifier() {
 
     }

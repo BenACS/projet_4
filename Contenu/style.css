@@ -50,6 +50,7 @@ hr {
 }
 
 article {
+    position: relative; /* Nécéssaire pour les boutons modifier / supprimer */
     background: rgb(216, 168, 48);
     border: 1px solid rgb(224, 152, 128);
 }
@@ -80,6 +81,7 @@ article header p, article h2:first-of-type {
 .auteur {
     background: rgba(248, 232, 152, 0.5);
     margin: 0;
+    padding-bottom: 10px; /* Meilleur rendu visuel en vue admin */
 }
 
 article + article {
@@ -89,6 +91,7 @@ article + article {
 /* INTERFACE ADMIN */
 
 /* Boutons + formulaire d'accès à l'interface */
+
 #divAccesInterfaceAdmin, #boutonDeco {
     position: fixed;
     bottom: 4px;
@@ -128,12 +131,34 @@ article + article {
     right: 2px;
 }
 
-/* Formulaire nouveau billet */
+/* Formulaires nouveau billet & modif billet */
 
-#formNouvBillet input[type=text] {
+#formNouvBillet input[type=text], #formModifBillet input[type=text] {
     width: 100%;
 }
 
-#formNouvBillet textarea {
+#formNouvBillet textarea, #formModifBillet textarea {
     min-height: 200px;
+}
+
+/* Boutons ajouter / supprimer / modifier */
+
+.boutModif, .boutSuppr {
+    position: absolute;
+    top: 2px;
+}
+
+.boutModif {
+    right: 30px;
+}
+
+.boutSuppr {
+    right: 2px;
+}
+
+.boutModif button, .boutSuppr button {
+    padding: 0 22px 22px 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
 }
