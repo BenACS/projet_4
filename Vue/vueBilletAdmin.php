@@ -23,7 +23,7 @@
     <h3>Commentaires :</h3>
 </header>
 <?php foreach ($commentaires as $commentaire): ?>
-    <article class="cont_comment">
+    <article class="contComment">
         <p class="auteur"><?= $commentaire['auteur'] ?> dit :</p>
         <p class="comment"><?= $commentaire['contenu'] ?></p>
         <!-- "Modifier" le commentaire -->

@@ -53,8 +53,10 @@ class Billet extends Modele {
     }
 
     // Modifie (update) un billet dans la bdd
-    public function modifier($idBillet, $titre, $contenu) {
-        $sql = 'update billets set titre=?, contenu=? where id=?';
+    public function modifier($titre, $contenu, $idBillet) {
+        $sql = 'update billets set titre = ?,'
+                . ' contenu = ?'
+                . ' where id = ?';
         $this->executerRequete($sql, array($titre, $contenu, $idBillet));
     }
 }

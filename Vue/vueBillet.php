@@ -15,14 +15,17 @@
     <article class="cont_comment">
         <p class="auteur"><?= $commentaire['auteur'] ?> dit :</p>
         <p class="comment"><?= $commentaire['contenu'] ?></p>
+        <form class="boutSignaler" method="POST" action="">
+            <button type="submit">
+                <i class="material-icons">report</i>
+            </button>
+        </form>
     </article>
 <?php endforeach; ?>
 <hr />
-<form method="post" action="index.php?action=commenter">
-    <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" 
-           required /><br />
-    <textarea id="txtCommentaire" name="contenu" rows="4" 
-              placeholder="Votre commentaire" required></textarea><br />
+<form method="POST" action="index.php?action=commenter">
+    <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" required /></br>
+    <textarea id="txtCommentaire" name="contenu" rows="4" placeholder="Votre commentaire" required></textarea></br>
     <input type="hidden" name="id" value="<?= $billet['id'] ?>" />
     <input type="submit" value="Commenter" />
 </form>

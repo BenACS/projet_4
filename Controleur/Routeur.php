@@ -85,23 +85,22 @@ class Routeur {
                 }
                 else if ($_GET['action'] == 'editeurBillet') {
                     if ($_SESSION['login'] == 'true') {
-                      
+                        $idBillet = intval($this->getParametre($_GET, 'id'));
+                        if ($idBillet != 0) {
+                            $this->ctrlAdmin->editeurBillet($idBillet);
+                        }
+                        else
+                            throw new Exception("Identifiant de billet non valide");
                     }
                     else
                         throw new Exception("Accès non autorisé");
-                    $idBillet = intval($this->getParametre($_GET, 'id'));
-                    if ($idBillet != 0) {
-                        $this->ctrlAdmin->editeurBillet($idBillet);
-                    }
-                    else
-                        throw new Exception("Identifiant de billet non valide");
                 }
                 else if ($_GET['action'] == 'modifierBillet') {
                     if ($_SESSION['login'] == 'true') {
                         $idBillet = intval($this->getParametre($_POST, 'id'));
                         $titre = $this->getParametre($_POST, 'titre');
                         $contenu = $this->getParametre($_POST, 'contenu');
-                        $this->ctrlBillet->modifier($idBillet, $titre, $contenu);
+                        $this->ctrlBillet->modifier($titre, $contenu, $idBillet);
                     }
                     else
                         throw new Exception("Accès non autorisé");
