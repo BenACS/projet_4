@@ -59,7 +59,7 @@ article header p {
     text-align: right;
 }
 
-article header p, article h2:first-of-type {
+article header p, .titreBillet {
     margin: 0;
     background: rgba(248, 232, 152, 0.5);
 }

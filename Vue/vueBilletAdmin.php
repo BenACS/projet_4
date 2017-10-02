@@ -1,8 +1,8 @@
 <?php $this->titre = "Mon Blog - " . $billet['titre']; ?>
 <article>
     <header>
-        <h2 class="titreBillet"><?= $billet['titre'] ?></h2>
-        <p>posté le <?= $billet['date'] ?></p>
+        <h2 class="titreBillet"><?= htmlspecialchars($billet['titre']) ?></h2>
+        <p>posté le <?= htmlspecialchars($billet['date']) ?></p>
     </header>
     <p><?= $billet['contenu'] ?></p>
     <!-- Modifier le billet -->
@@ -24,8 +24,8 @@
 </header>
 <?php foreach ($commentaires as $commentaire): ?>
     <article class="contComment">
-        <p class="auteur"><?= $commentaire['auteur'] ?> dit :</p>
-        <p class="comment"><?= $commentaire['contenu'] ?></p>
+        <p class="auteur"><?= htmlspecialchars($commentaire['auteur']) ?> dit :</p>
+        <p class="comment"><?= htmlspecialchars($commentaire['contenu']) ?></p>
         <!-- "Modifier" le commentaire -->
         <form class="boutModif" method="POST" action="<?= "index.php?action=modererCom&id=" . $commentaire['id'] ?>">
             <button type="submit">
@@ -41,6 +41,7 @@
     </article>
 <?php endforeach; ?>
 <hr />
+<!-- Poster un commentaire -->
 <form method="post" action="index.php?action=commenter">
     <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" 
            required /><br />

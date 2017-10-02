@@ -29,10 +29,31 @@ class Commentaire extends Modele {
 
     // Modifie (update) un commentaire dans la bdd
     public function moderer($idCommentaire) {
-        $sql = 'update commentaires set contenu = ?'
+        /*  Le contenu est modifié, on ne permet pas à l'administrateur du blog de modifier lui-même le contenu,
+            on met la valeur "signalements" à 0 afin que le commentaire, une fois modéré, ne s'affiche plus sur la
+            page "commentaires signalés" (Il ne serait pas logique de l'afficher puisqu'il a déjà été modéré). */
+        $sql = 'update commentaires set contenu = ?,'
+                . ' signalements = 0'
                 . ' where id = ?';
 
         $nouveauContenu = '"Ce commentaire a été modéré par l\'administration."'; // Texte indiquant que le contenu a été modéré
         $this->executerRequete($sql, array($nouveauContenu, $idCommentaire));
+    }
+
+    // Signale un commentaire (on augmente de 1 "signalements" dans la bdd)
+    public function signaler($idCommentaire) {
+        $sql = 'update commentaires set signalements=signalements+1 where id=?';
+        $this->executerRequete($sql, array($idCommentaire));
+    }
+
+    // Récupère la liste des commentaires signalés
+    public function getComSignales() {
+        $sql = 'select id, date_commentaire as date,'
+                . ' pseudo as auteur,'
+                . ' contenu from commentaires'
+                . ' where signalements>=1'
+                . ' order by signalements desc';
+        $commentaires = $this->executerRequete($sql);
+        return $commentaires;
     }
 }
