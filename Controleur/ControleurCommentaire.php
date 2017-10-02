@@ -21,4 +21,12 @@ class ControleurCommentaire {
         $vue = new Vue("Admin");
         $vue->generer(array('billets' => $billets));
     }
+
+    // "Modère" un commentaire existant
+    public function moderer($idCommentaire) {
+        $this->commentaire->moderer($idCommentaire);
+        $billets = $this->billet->getBillets();
+        $vue = new Vue("Admin");
+        $vue->generer(array('billets' => $billets));
+    }
 }

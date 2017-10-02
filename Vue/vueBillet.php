@@ -15,7 +15,8 @@
     <article class="cont_comment">
         <p class="auteur"><?= $commentaire['auteur'] ?> dit :</p>
         <p class="comment"><?= $commentaire['contenu'] ?></p>
-        <form class="boutSignaler" method="POST" action="">
+        <!-- Signaler le commentaire -->
+        <form class="boutSignaler" method="POST" action="<?= "index.php?action=signalert&id=" . $commentaire['id'] ?>">
             <button type="submit">
                 <i class="material-icons">report</i>
             </button>

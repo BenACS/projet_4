@@ -4,7 +4,7 @@ require_once 'Modele/Modele.php';
 
 class Commentaire extends Modele {
 
-// Renvoie la liste des commentaires associés à un billet
+    // Renvoie la liste des commentaires associés à un billet
     public function getCommentaires($idBillet) {
         $sql = 'select id, date_commentaire as date,'
                 . ' pseudo as auteur, contenu from commentaires'
@@ -24,11 +24,15 @@ class Commentaire extends Modele {
     // Supprime un commentaire dans la bdd
     public function supprimer($idCommentaire) {
         $sql = 'delete from Commentaires where id=?';
-        $commentaire = $this->executerRequete($sql, array($idCommentaire));
+        $this->executerRequete($sql, array($idCommentaire));
     }
 
     // Modifie (update) un commentaire dans la bdd
-    public function modifier() {
+    public function moderer($idCommentaire) {
+        $sql = 'update commentaires set contenu = ?'
+                . ' where id = ?';
 
+        $nouveauContenu = '"Ce commentaire a été modéré par l\'administration."'; // Texte indiquant que le contenu a été modéré
+        $this->executerRequete($sql, array($nouveauContenu, $idCommentaire));
     }
 }

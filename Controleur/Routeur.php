@@ -113,6 +113,18 @@ class Routeur {
                     else
                         throw new Exception("Accès non autorisé");
                 }
+                else if ($_GET['action'] == 'modererCom') {
+                    if ($_SESSION['login'] == 'true') {
+                        $idCommentaire = intval($this->getParametre($_GET, 'id'));
+                        $this->ctrlCommentaire->moderer($idCommentaire);
+                    }
+                    else
+                        throw new Exception("Accès non autorisé");
+                }
+                else if ($_GET['action'] == 'signaler') {
+                    $idCommentaire = intval($this->getParametre($_GET, 'id'));
+                    $this->ctrlCommentaire->signaler($idCommentaire);
+                }
                 else
                     throw new Exception("Action non valide");
             }

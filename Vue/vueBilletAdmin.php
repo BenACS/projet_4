@@ -27,7 +27,7 @@
         <p class="auteur"><?= $commentaire['auteur'] ?> dit :</p>
         <p class="comment"><?= $commentaire['contenu'] ?></p>
         <!-- "Modifier" le commentaire -->
-        <form class="boutModif" method="POST" action="">
+        <form class="boutModif" method="POST" action="<?= "index.php?action=modererCom&id=" . $commentaire['id'] ?>">
             <button type="submit">
                 <i class="material-icons">create</i>
             </button>
