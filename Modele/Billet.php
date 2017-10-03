@@ -29,7 +29,7 @@ class Billet extends Modele {
      */
     public function getBillet($idBillet) {
         $sql = 'select id, date_creation as date,'
-                . ' titre, contenu from Billets'
+                . ' titre, contenu from billets'
                 . ' where id=?';
         $billet = $this->executerRequete($sql, array($idBillet));
         if ($billet->rowCount() > 0)
@@ -40,7 +40,7 @@ class Billet extends Modele {
 
     // Supprime un billet dans la bdd
     public function supprimer($idBillet) {
-        $sql = 'delete from Billets where id=?';
+        $sql = 'delete from billets where id=?';
         $this->executerRequete($sql, array($idBillet));
     }
 

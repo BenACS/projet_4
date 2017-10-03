@@ -1,11 +1,13 @@
-<!-- Ajouter un billet -->
-<form class="boutAjoutBillet" method="POST" action="index.php?action=nouveauBillet">
-    <input type="submit" value="Ajouter un nouveau billet">
-</form>
-<!-- Afficher les commentaires signalés -->
-<form method="POST" action="index.php?action=signalements">
-    <input type="submit" value="Voir les commentaires signalés">
-</form>
+<div id="boutAdmin">
+    <!-- Ajouter un billet -->
+    <form class="boutAjoutBillet" method="POST" action="index.php?action=nouveauBillet">
+        <input type="submit" value="Ajouter un nouveau billet">
+    </form>
+    <!-- Afficher les commentaires signalés -->
+    <form method="POST" action="index.php?action=signalements">
+        <input type="submit" value="Voir les commentaires signalés">
+    </form>
+</div>
 <hr />
 <?php foreach ($billets as $billet):
     ?>

@@ -23,7 +23,7 @@ class Commentaire extends Modele {
 
     // Supprime un commentaire dans la bdd
     public function supprimer($idCommentaire) {
-        $sql = 'delete from Commentaires where id=?';
+        $sql = 'delete from commentaires where id=?';
         $this->executerRequete($sql, array($idCommentaire));
     }
 

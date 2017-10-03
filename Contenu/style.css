@@ -18,7 +18,7 @@ body {
     font-family: 'Futura-Medium', 'Futura', 'Trebuchet MS', sans-serif;
 }
 
-h1, h2, h3 {
+#titreBlog, .titreBillet {
     color: rgb(160, 104, 104);
 }
 
@@ -131,6 +131,11 @@ article + article {
     right: 2px;
 }
 
+#boutAdmin {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Formulaires nouveau billet & modif billet */
 
 #formNouvBillet input[type=text], #formModifBillet input[type=text] {
@@ -160,5 +165,8 @@ article + article {
     padding: 0 22px 22px 0;
     width: 24px;
     height: 24px;
+}
+
+button, input[type="submit"] {
     border-radius: 4px;
 }
