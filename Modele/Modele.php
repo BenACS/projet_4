@@ -1,11 +1,8 @@
 <?php
 
-/**
- * Classe abstraite Modèle.
+/* Classe abstraite Modèle.
  * Centralise les services d'accès à une base de données.
  * Utilise l'API PDO
- *
- * @author Baptiste Pesquet
  */
 abstract class Modele {
 
