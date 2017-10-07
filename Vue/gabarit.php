@@ -16,13 +16,14 @@
             </div> <!-- #contenu -->
         </div> <!-- #global -->
         <footer>
-            <?php if ($_SESSION['login']) {
-                include "vueBoutonPageAdmin.php";
-                include "vueDeconnexion.php";
-            } 
-            else {
-                include "vueConnexion.php";
-            }
+            <?php
+                if ($_SESSION['login']) {
+                    include "vueBoutonPageAdmin.php";
+                    include "vueDeconnexion.php";
+                } 
+                else {
+                    include "vueConnexion.php";
+                }
             ?>
         </footer>
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=8fwlfhhvvlj749bi3q9l558no7zzxrkq6ab6i8azo2id6vgw"></script>
