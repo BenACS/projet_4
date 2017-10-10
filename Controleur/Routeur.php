@@ -154,7 +154,7 @@ class Routeur {
                     break;
 
                     default:
-                        throw new Exception("Accès non autorisé");
+                        throw new Exception("Action non valide");
                     break;
                 }
             }
