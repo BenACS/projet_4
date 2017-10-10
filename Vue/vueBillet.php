@@ -1,4 +1,4 @@
-<?php $this->titre = "Mon Blog - " . $billet['titre']; ?>
+<?php $this->titre = "Projet 4 - " . $billet['titre']; ?>
 
 <article>
     <header>
