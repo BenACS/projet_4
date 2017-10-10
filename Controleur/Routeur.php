@@ -24,123 +24,142 @@ class Routeur {
     public function routerRequete() {
         try {
             if (isset($_GET['action'])) {
-                if ($_GET['action'] == 'billet') {
-                    $idBillet = intval($this->getParametre($_GET, 'id'));
-                    if ($idBillet != 0) {
-                        if ($_SESSION['login'] == true) {
-                            $this->ctrlAdmin->billetAdmin($idBillet);
-                        }
-                        else {
-                            $this->ctrlBillet->billet($idBillet);
-                        }
-                    }
-                    else
-                        throw new Exception("Identifiant de billet non valide");
-                }
-                else if ($_GET['action'] == 'commenter') {
-                    $auteur = $this->getParametre($_POST, 'auteur');
-                    $contenu = $this->getParametre($_POST, 'contenu');
-                    $idBillet = $this->getParametre($_POST, 'id');
-                    $this->ctrlBillet->commenter($auteur, $contenu, $idBillet);
-                }
-                else if ($_GET['action'] == 'connexion') {
-                    $login = $this->getParametre($_POST, 'login');
-                    $mdp = $this->getParametre($_POST, 'mdp');
-                    $this->ctrlAdmin->connect($login, $mdp);
-                }
-                else if ($_GET['action'] == 'deconnexion') {
-                    $this->ctrlAdmin->deconnecter();
-                }
-                else if ($_GET['action'] == 'admin') {
-                    if ($_SESSION['login'] == true) {
-                        $this->ctrlAdmin->pageAdmin();
-                    }
-                    else
-                        throw new Exception("Accès non autorisé");
-                }
-                else if ($_GET['action'] == 'supprimerBillet') {
-                    if ($_SESSION['login'] == true) {
+                switch ($_GET['action']) {
+                    case 'billet': // affichage d'un billet avec commentaires
                         $idBillet = intval($this->getParametre($_GET, 'id'));
-                        $this->ctrlBillet->supprimer($idBillet);
-                    }
-                    else
-                        throw new Exception("Accès non autorisé");
-                }
-                else if ($_GET['action'] == 'nouveauBillet') {
-                    if ($_SESSION['login'] == true) {
-                        $vue = new Vue("FormCreationBillet");
-                        $vue->generer(array());
-                    }
-                    else
-                        throw new Exception("Accès non autorisé");
-                }
-                else if ($_GET['action'] == 'ajouterBillet') {
-                    if ($_SESSION['login'] == true) {
-                        $titre = $this->getParametre($_POST, 'titre');
-                        $contenu = $this->getParametre($_POST, 'contenu');
-                        $this->ctrlBillet->ajouter($titre, $contenu);
-                    }
-                    else
-                        throw new Exception("Accès non autorisé");
-                }
-                else if ($_GET['action'] == 'editeurBillet') {
-                    if ($_SESSION['login'] == true) {
-                        $idBillet = intval($this->getParametre($_GET, 'id'));
-                        if ($idBillet != 0) {
-                            $this->ctrlAdmin->editeurBillet($idBillet);
+                            if ($idBillet != 0) {
+                            if ($_SESSION['login'] == true) {
+                                $this->ctrlAdmin->billetAdmin($idBillet);
+                            }
+                            else {
+                                $this->ctrlBillet->billet($idBillet);
+                            }
                         }
                         else
                             throw new Exception("Identifiant de billet non valide");
-                    }
-                    else
-                        throw new Exception("Accès non autorisé");
-                }
-                else if ($_GET['action'] == 'modifierBillet') {
-                    if ($_SESSION['login'] == true) {
-                        $idBillet = intval($this->getParametre($_POST, 'id'));
-                        $titre = $this->getParametre($_POST, 'titre');
+                    break;
+
+                    case 'commenter': // ajouter un commentaire
+                        $auteur = $this->getParametre($_POST, 'auteur');
                         $contenu = $this->getParametre($_POST, 'contenu');
-                        $this->ctrlBillet->modifier($titre, $contenu, $idBillet);
-                    }
-                    else
-                        throw new Exception("Accès non autorisé");
-                }
-                else if ($_GET['action'] == 'supprimerCom') {
-                    if ($_SESSION['login'] == true) {
+                        $idBillet = $this->getParametre($_POST, 'id');
+                        $this->ctrlBillet->commenter($auteur, $contenu, $idBillet);
+                    break;
+
+                    case 'connexion': // se connecter (admin)
+                        $login = $this->getParametre($_POST, 'login');
+                        $mdp = $this->getParametre($_POST, 'mdp');
+                        $this->ctrlAdmin->connect($login, $mdp);
+                    break;
+
+                    case 'deconnexion': // se déconnecter (admin)
+                        $this->ctrlAdmin->deconnecter();
+                    break;
+
+                    case 'admin': // affichage de l'interface admin
+                        if ($_SESSION['login'] == true) {
+                            $this->ctrlAdmin->pageAdmin();
+                        }
+                        else
+                            throw new Exception("Accès non autorisé");
+                    break;
+
+                    // Actions en rapport avec la gestion des billets
+                    case 'supprimerBilet':
+                        if ($_SESSION['login'] == true) {
+                            $idBillet = intval($this->getParametre($_GET, 'id'));
+                            $this->ctrlBillet->supprimer($idBillet);
+                        }
+                        else
+                            throw new Exception("Accès non autorisé");
+                    break;
+
+                    case 'nouveauBillet':
+                        if ($_SESSION['login'] == true) {
+                            $vue = new Vue("FormCreationBillet");
+                            $vue->generer(array());
+                        }
+                        else
+                            throw new Exception("Accès non autorisé");
+                    break;
+
+                    case 'ajouterBillet':
+                        if ($_SESSION['login'] == true) {
+                            $titre = $this->getParametre($_POST, 'titre');
+                            $contenu = $this->getParametre($_POST, 'contenu');
+                            $this->ctrlBillet->ajouter($titre, $contenu);
+                        }
+                        else
+                            throw new Exception("Accès non autorisé");
+                    break;
+
+                    case 'editeurBillet': // affiche l'éditeur (TinyMCE)
+                        if ($_SESSION['login'] == true) {
+                            $idBillet = intval($this->getParametre($_GET, 'id'));
+                            if ($idBillet != 0) {
+                                $this->ctrlAdmin->editeurBillet($idBillet);
+                            }
+                            else
+                                throw new Exception("Identifiant de billet non valide");
+                        }
+                        else
+                            throw new Exception("Accès non autorisé");
+                    break;
+
+                    case 'modifierBillet':
+                        if ($_SESSION['login'] == true) {
+                            $idBillet = intval($this->getParametre($_POST, 'id'));
+                            $titre = $this->getParametre($_POST, 'titre');
+                            $contenu = $this->getParametre($_POST, 'contenu');
+                            $this->ctrlBillet->modifier($titre, $contenu, $idBillet);
+                        }
+                        else
+                            throw new Exception("Accès non autorisé");
+                    break;
+
+                    // Actions en rapport avec la gestion des commentaires
+                    case 'supprimerCom':
+                        if ($_SESSION['login'] == true) {
+                            $idCommentaire = intval($this->getParametre($_GET, 'id'));
+                            $this->ctrlCommentaire->supprimer($idCommentaire);
+                        }
+                        else
+                            throw new Exception("Accès non autorisé");
+                    break;
+
+                    case 'modererCom':
+                        if ($_SESSION['login'] == true) {
+                            $idCommentaire = intval($this->getParametre($_GET, 'id'));
+                            $this->ctrlCommentaire->moderer($idCommentaire);
+                        }
+                        else
+                            throw new Exception("Accès non autorisé");
+                    break;
+
+                    case 'signaler':
                         $idCommentaire = intval($this->getParametre($_GET, 'id'));
-                        $this->ctrlCommentaire->supprimer($idCommentaire);
-                    }
-                    else
-                        throw new Exception("Accès non autorisé");
-                }
-                else if ($_GET['action'] == 'modererCom') {
-                    if ($_SESSION['login'] == true) {
-                        $idCommentaire = intval($this->getParametre($_GET, 'id'));
-                        $this->ctrlCommentaire->moderer($idCommentaire);
-                    }
-                    else
-                        throw new Exception("Accès non autorisé");
-                }
-                else if ($_GET['action'] == 'signaler') {
-                    $idCommentaire = intval($this->getParametre($_GET, 'id'));
-                    if ($idCommentaire != 0) {
-                        $this->ctrlCommentaire->signaler($idCommentaire);
-                    }
-                    else
-                        throw new Exception("Identifiant de commentaire non valide");
-                }
-                else if ($_GET['action'] == 'signalements') {
-                     if ($_SESSION['login'] == true) {
+                        if ($idCommentaire != 0) {
+                            $this->ctrlCommentaire->signaler($idCommentaire);
+                        }
+                        else
+                            throw new Exception("Identifiant de commentaire non valide");
+                    break;
+
+                    case 'signalements': // Affiche la liste des billets signalés
+                        if ($_SESSION['login'] == true) {
                             $this->ctrlCommentaire->listeComSignales();
-                    }
-                    else
+                        }
+                        else
+                            throw new Exception("Accès non autorisé");
+                    break;
+
+                    default:
                         throw new Exception("Accès non autorisé");
+                    break;
                 }
-                else
-                    throw new Exception("Action non valide");
             }
             else {  // aucune action définie : affichage de l'accueil
-                $this->ctrlAccueil->accueil();
+               $this->ctrlAccueil->accueil();
             }
         }
         catch (Exception $e) {
@@ -162,5 +181,4 @@ class Routeur {
         else
             throw new Exception("Paramètre '$nom' absent");
     }
-
 }
