@@ -1,4 +1,5 @@
 <?php $this->titre = "Mon Blog - " . $billet['titre']; ?>
+
 <article>
     <header>
         <h2 class="titreBillet"><?= htmlspecialchars($billet['titre']) ?></h2>

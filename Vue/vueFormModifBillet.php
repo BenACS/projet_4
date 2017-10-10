@@ -1,3 +1,5 @@
+<?php $this->titre = "Projet 4 - Modifier billet"; ?>
+
 <form id="formModifBillet" method="POST" action="index.php?action=modifierBillet">
 	<input type="hidden" name="id" value="<?= $_GET['id'] ?>">
 

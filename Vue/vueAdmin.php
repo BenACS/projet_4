@@ -1,3 +1,5 @@
+<?php $this->titre = "Projet 4 - Interface admin"; ?>
+
 <div id="boutAdmin">
     <!-- Ajouter un billet -->
     <form class="boutAjoutBillet" method="POST" action="index.php?action=nouveauBillet">

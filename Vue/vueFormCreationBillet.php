@@ -1,3 +1,5 @@
+<?php $this->titre = "Projet 4 - nouveau billet"; ?>
+
 <form id="formNouvBillet" method="POST" action="index.php?action=ajouterBillet">
 	<label for="titre">Titre du billet :</label></br>
 	<input type="text" name="titre"></br></br>

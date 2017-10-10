@@ -1,3 +1,5 @@
+<?php $this->titre = "Projet 4 - Signalements"; ?>
+
 <?php foreach ($commentaires as $commentaire): ?>
     <article class="cont_comment">
         <p class="auteur"><?= htmlspecialchars($commentaire['auteur']) ?> dit :</p>
