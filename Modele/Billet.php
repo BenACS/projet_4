@@ -4,8 +4,6 @@ require_once 'Modele/Modele.php';
 
 /**
  * Fournit les services d'accès aux genres musicaux 
- * 
- * @author Baptiste Pesquet
  */
 class Billet extends Modele {
 
