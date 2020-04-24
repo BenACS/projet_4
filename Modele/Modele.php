@@ -35,8 +35,8 @@ abstract class Modele {
     private function getBdd() {
         if ($this->bdd == null) {
             // Création de la connexion
-            $this->bdd = new PDO('mysql:host=localhost;dbname=projet_4;charset=utf8',
-                    'root', '',
+            $this->bdd = new PDO('mysql:host=mysql-helix.alwaysdata.net;dbname=helix_projet_4;charset=utf8',
+                    'helix', 'x-0032649',
                     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
         return $this->bdd;

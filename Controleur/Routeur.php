@@ -65,7 +65,7 @@ class Routeur {
                     break;
 
                     // Actions en rapport avec la gestion des billets
-                    case 'supprimerBilet':
+                    case 'supprimerBillet':
                         if ($_SESSION['login'] == true) {
                             $idBillet = intval($this->getParametre($_GET, 'id'));
                             $this->ctrlBillet->supprimer($idBillet);
